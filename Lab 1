@@ -1,0 +1,18 @@
+#collect string inputs and output the reverse
+
+def question_1(): 
+
+    #declare new list
+    string_list = []
+
+    #run from range of 1-5
+    for i in range(1,6,1):
+        user = str(input("Enter string " + str(i) + "/5:")) #ask user for string
+        string_list.append(user)   #put entered string into list
+    
+    #make another list where you print everything in reverse order
+    for j in range(4,-1,-1):
+        print("string " +str(j+1) + "/5: " +string_list[j])
+       
+ 
+ if __name__ == "__main__":
