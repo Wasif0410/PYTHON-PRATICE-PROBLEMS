@@ -1,0 +1,25 @@
+#given an integer put brackets around the longest sequence of consecutive integers
+#EX. (1111)234789234872364893
+
+
+import random
+
+def question_1(): 
+    values = [random.randrange(1,7) for i in range(20)]
+    values.append("")
+
+    inRun = False
+
+    for i in range(len(values)-1):
+        if inRun == True:
+            if values[i] != values[i-1]:
+                print(")", end ="")
+                inRun = False
+        
+        if values[i] == values[i+1] and not inRun:
+            print("(", end ="")
+            inRun = True
+        print(values[i], end="")
+
+    if inRun==True:
+        print(")", end ="")
