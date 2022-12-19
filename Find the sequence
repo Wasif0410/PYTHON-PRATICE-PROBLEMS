@@ -1,5 +1,5 @@
-#given an integer put brackets around the longest sequence of consecutive integers
-#EX. (1111)234789234872364893
+#given an integer put brackets around any sequence of integers
+#EX. (1111)2347(88)923487236489(33)
 
 
 import random
