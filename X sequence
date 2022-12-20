@@ -1,7 +1,7 @@
 #Given an integer value n, add X's in the list of "_" n times, the X's must be added in the middle of the longest sequence everytime
 
 #Ex. n = 1 
-#output: ['_', '_', '_', '_', '_', 'X', '_', '_', '_', '_']
+#output: ['_', '_', '_', '_', '_', 'X', '_', '_', '_', '_'] 
 
 
 def occupy(n):
