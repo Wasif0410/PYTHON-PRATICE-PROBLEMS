@@ -1,0 +1,34 @@
+def reverse_vowels(text):
+
+    #set variables
+    newlist = []
+    vowel = "aeiouAEIOU"
+
+    #check if text value at i in vowels
+    for i in text:
+        if i in vowel:
+            newlist.append(i)   #if it is append it to a list
+
+    result = "" #set result to ""
+    
+    #for loop through the text
+    for i in text:
+
+        #if the value of text at i is in value, pop the last element of newlist
+        if i in vowel:
+            rem = newlist.pop()
+
+            #if the value of text at i is lower turn "rem" to lower
+            if i.islower():
+                result += rem.lower()
+            
+            #if the value of text at i is upper turn "rem" to upper
+            elif i.isupper():
+                result += rem.upper()
+        
+        #else add one to result
+        else:
+            result += i
+
+    
+    return result
