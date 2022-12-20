@@ -30,7 +30,7 @@ def tukeys_ninthers(items):
             
             #sort every individual list within the list
             for i in range(len(newlist)):
-                newlist[i].sort()
+                newlist[i].sort() 
 
             items.clear()   #clear the original list we had as items so we can update it
 
