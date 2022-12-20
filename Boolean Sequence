@@ -32,7 +32,7 @@ def longestFalse(L):
 
                 if counter >= longest:  #if the counter is greater than or equal to longest collect the index in a list
                     longest = counter
-                    inx_start.append(start)
+                    inx_start.append(start) 
                     inx_end.append(end)
 
         
