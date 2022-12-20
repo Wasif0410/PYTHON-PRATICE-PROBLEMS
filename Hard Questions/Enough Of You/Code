@@ -1,0 +1,19 @@
+def remove_after_kth(items, k=1):
+
+    my_dict = {}
+    newlist = []
+
+    for i in range(len(items)):
+
+        if items[i] in my_dict: #check if in dict
+
+            if my_dict[items[i]] < k:  #check if value is still less than k
+
+                newlist.append(items[i])   #if the value is less than value given
+                my_dict[items[i]] += 1             #add 1 to value of key
+
+        else:   
+            newlist.append(items[i])    #append into nwelist
+            my_dict[items[i]] = 1   #set the value to 1 by default first time essentially
+    
+    return newlist
