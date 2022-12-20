@@ -1,0 +1,88 @@
+#Given an integer value n, add X's in the list of "_" n times, the X's must be added in the middle of the longest sequence everytime
+
+#Ex. n = 1 
+#output: ['_', '_', '_', '_', '_', 'X', '_', '_', '_', '_']
+
+
+def occupy(n):
+
+    
+    #declare variables
+    start = 0           #index for start of sequence
+    end = 0             #index for end of sequence
+    longest = 0         #longest sequence
+    inx_start = []   #list of start indexes
+    inx_end = []     #list of end indexes
+    counter = 0         #counter of sequnce
+
+
+    if n>=1:   #run when n is greter than or equal to 1
+        
+        list_1 =["_","_","_","_","_","_","_","_","_","_"]   
+
+        #Condition if list ends with a sequence(ex.[1,2,3,4,4,4,4])
+        list_1.append("null")
+        list_1.append("none")
+
+        inRun = False   #set is run to False
+
+        while n>0: #run when n>0
+
+            #for loop that compares everything but the last element
+            for i in range(len(list_1)-1):
+                
+                if inRun == True:              
+                    if list_1[i] != list_1[i-1]:    #when the sequence ends
+                        end = i #if the sequence ends collect the index
+                        counter = len(list_1[start:end])    #collect the lenght of index from start to end
+                        inRun = False   #set to false
+
+                        if counter > longest:  #if the counter is greater than or equal to longest collect the index in a list
+                            longest = counter
+                            inx_start.append(start) #add index to list
+                            inx_end.append(end) #add index to list
+                            
+            
+                if list_1[i] == list_1[i+1] and inRun==False and list_1[i]!="X":   #if the element matches the one next to it and when inrun is false and when the value is false
+                    start = i   #when sequence starts collect index
+                    inRun = True    #set to true
+
+                elif longest == 0 and list_1[i]=="_":   #when the longest sequnce is 0, and the element in the list is "_"
+                    inx_start.append(i) #add the element to the list
+                    inx_end.append(i) 
+
+                    
+
+            #take out the last 2 elements in the list        
+            list_1.pop()
+            list_1.pop()
+
+            #change the middle o the longest index to "X"
+            #we take the last element in both the lists as they are the longest, and do //2 so we can get the middle of the value
+            list_1[((inx_start[-1]+inx_end[-1])//2)]="X"
+            
+            #run this if we are not on the last iteration where n equals 1
+            #essentially reset all the values after doing the first iteration
+            if n!=1:
+                list_1.append("null")   
+                list_1.append("none")
+                longest = 0
+                inx_start=[]
+                inx_end=[]
+                counter = 0
+
+            #do -1 with occupt value and run next iteration
+            n = n-1  
+
+
+        print(list_1)
+
+    else:   #if n is equal to 0 or any other value not greater than or equal to one print the original list
+        print(["_","_","_","_","_","_","_","_","_","_"])
+       
+      
+     
+     
+if __name__ == "__main__":
+
+    occupy(5)
