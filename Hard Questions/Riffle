@@ -1,0 +1,20 @@
+def riffle(items, out = True):
+
+    #slice list into 2 part
+    first_part = items[0:len(items)//2]
+    second_part = items[len(items)//2:]
+    items = []
+
+    #run for loop
+    for i in range(len(first_part)):
+
+        #if out is true append the first part then the second part
+        if out == True:
+            items.append(first_part[i])
+            items.append(second_part[i]) 
+
+        #if out if false do the opposite of out == True
+        elif out == False:
+            items.append(second_part[i]) 
+            items.append(first_part[i])
+    return items
