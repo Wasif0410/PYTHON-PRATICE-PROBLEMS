@@ -1,0 +1,104 @@
+import unittest
+from matrices import *
+# --------------------------------------------------------------q3.py
+# Two-dimensional arrays, simple algorithms
+# --------------------------------------------------------------
+
+# --------------------------------------------------------------
+# Find the most frequent value in the matrxi
+# --------------------------------------------------------------
+def mostfrequent(matrix) :
+    '''
+    Returns the value that is most frequent in the matrix
+    but in the case of a tie, return the lowest most frequent value
+    '''
+
+    #decalre variables
+    items = []
+    new_list=[]
+
+    #special condition if the length of the matrix is 1
+    if len(matrix) == 1:
+      exc = matrix[0][0]
+      return exc
+
+    #special condition if the length of the matrix is 0
+    elif len(matrix) == 0:
+      return 0
+
+    #if its not a special condition
+    else:
+        #turn 2d array into 1d array
+        for i in range(len(matrix)):
+            for j in matrix[i]:
+                items.append(j)
+
+        #sort
+        items.sort()
+
+        #initialize
+        counter = 0
+        longest = 0
+
+        #use the sequential counting algorithm
+        for i in range((len(items))-1):
+            
+            #if in the sequence 2 items match increase counter
+            if items[i]==items[i+1]:
+                counter+=1
+
+            #if they don't match counter is 0 no sequence
+            else:
+                counter = 0
+
+            #if the counter is bigger than the longest sequence
+            #reset the list and append new longest value
+            if counter > longest:
+                new_list.clear()
+                new_list.append(items[i])
+                longest = counter   #make the longest sequence into counter which is currect sequence
+            
+            #if there are 2 longest values
+            elif counter == longest:
+                new_list.append(items[i])
+                longest = counter    #make the longest sequence into counter which is currect sequence
+            
+
+        #print the minimum value
+        return min(new_list)
+            
+
+# ----------------------------------------------------------
+# Show the matrices that we imported 
+# matrix1, matrix2 and using printmx()
+# --------------------------------------------------------------
+printmx(matrix1)
+printmx(matrix2)
+printmx(matrix3)
+printmx(matrix4)
+printmx(matrix5)
+printmx(matrix6)
+# --------------------------------------------------------------
+# The Testing
+# --------------------------------------------------------------
+class myTests(unittest.TestCase):
+ def test1(self):
+  self.assertEqual(mostfrequent(matrix1), 16)
+ def test2(self):
+  self.assertEqual(mostfrequent(matrix2), 50)
+ def test3(self):
+  self.assertEqual(mostfrequent(matrix3), 75)
+ def test4(self):
+  self.assertEqual(mostfrequent(matrix4), -129)
+ def test5(self):
+  self.assertEqual(mostfrequent(matrix5), 95)
+ def test6(self):
+  self.assertEqual(mostfrequent(matrix6), 16)
+
+if __name__ == '__main__':
+ unittest.main(exit=True)
+
+
+# --------------------------------------------------------------
+# The End
+# --------------------------------------------------------------
