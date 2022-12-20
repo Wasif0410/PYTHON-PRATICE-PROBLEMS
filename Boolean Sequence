@@ -1,0 +1,53 @@
+#given a list of boolean values True and False find the index of the longest sequence and return it as a tuple
+#Ex. L = [False, False, True, False, False, False, True, True, False, True, False], this input should return tuple of index's (3,5)
+
+
+def longestFalse(L):
+
+    #declare variables
+    start = 0           #index for start of sequence
+    end = 0             #index for end of sequence
+    longest = 0         #longest sequence
+    inx_start = []   #list of start indexes
+    inx_end = []     #list of end indexes
+    counter = 0         #counter of sequnce
+
+    new_start_inx = []         #list for start index values where theres a sequence
+    new_end_inx=[]           #list for end index values where theres a sequence
+
+
+    #special condition if list ends with a sequence(ex.[1,2,3,4,4,4,4]) or if sequnce ends and number is next element(ex.[1,2,2,2,5])
+    L.append("")   
+    L.append("")   
+
+    inRun = False   #set is run to False
+
+    #for loop that compares everything but the last element
+    for i in range(len(L)-1):
+        if inRun == True:              
+            if L[i] != L[i-1]:    #when the sequence ends
+                end = i #if the sequence ends collect the index
+                counter = len(L[start:end])    #collect the lenght of index from start to end
+                inRun = False   #set to false
+
+                if counter >= longest:  #if the counter is greater than or equal to longest collect the index in a list
+                    longest = counter
+                    inx_start.append(start)
+                    inx_end.append(end)
+
+        
+        if L[i] == L[i+1] and inRun==False and L[i]==False:   #if the element matches the one next to it and when inrun is false and when the value is false
+            start = i   #when sequence starts collect index
+            inRun = True    #set to true
+
+    for i in range(len(inx_start)): #run a loop through either start or end list of index
+        if inx_end[i]-inx_start[i] == longest:  #if the index value from when sequence ends - from when it starts is as big as longest
+            new_start_inx.append(inx_start[i])  #put it into a list where there are only the longest sequence indexes
+            new_end_inx.append(inx_end[i])
+
+    longest_sequence=(new_start_inx[0],new_end_inx[0]-1)    #return the index at the start and end -1 as its inclusive
+    return(longest_sequence)
+    
+if __name__ == "__main__":
+    print("\n") #print on newline
+    print(longestFalse([False, False, True, False, False, False, True, True, False, True, False]))   
