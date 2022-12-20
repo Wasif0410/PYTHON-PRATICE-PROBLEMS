@@ -58,4 +58,4 @@ def question_2():
         if i in new_start_inx:
             print("(", end="")
 
-        print(values[i], end="")
+        print(values[i], end="") 
