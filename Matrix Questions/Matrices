@@ -25,7 +25,7 @@ def printmx(mx) :
     print('-------------------')
 def printrow(row) :
     for i in range(len(row)) :
-        print('{:5}'.format(row[i]), end = '')
+        print('{:5}'.format(row[i]), end = '') 
     print()
 # ----------------------------------------------------------
 # Defining a couple of matrices to try out the printing
