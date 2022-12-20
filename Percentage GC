@@ -1,0 +1,41 @@
+#given a file of letters GCAT, read the file and find the percentage of "G" and "C" occurrences using recursion
+#Ex. If the file contains "GCAA" then the percentage of "G" and "C" is 50%
+
+
+def readfile():
+    f = open('kdpF.txt') # opens a file for reading
+    line = f.readline() # reads a single line
+
+    seq = ''
+    for line in f : # reading the rest of the lines
+        seq = seq + line
+    seq = seq.replace('\n', '') # removing the newline characters
+    seq = seq.upper()
+    return seq
+
+
+def gcContent(sequence, new_seq):
+# You do the rest
+
+    if len(sequence)==0:    #When the string has no letter return 0
+        return 0
+    else:
+        if "C" == sequence[0] or "G" == sequence[0]:    #when the first letter of our sequence is either C or G
+            return (1/len(new_seq))*100 + gcContent(sequence[1:],new_seq)   #add the value of 1/the length of our non-tampered seqence
+                                                                            #this gets the percentage of each value and adds it
+
+        else:   #if the letters are not C or G                  
+             return gcContent(sequence[1:],new_seq) #re-call the function but this time with the first letter of the oldsequence gone
+
+    #Explanation
+    #This sequence returns an integer value so it will just collect the values where the if statment works and add them together
+    #It will always return 0 at the end, and basically add all the percentages along the way
+    #so whenever if statement is true, return the percentage of 1/len(new_seq) and keep adding it with every instance of the if condition
+   
+   
+   if __name__ == "__main__":
+
+    #question 7
+    sequence = readfile()  #get the sequence value from previous function
+    new_seq = sequence[:]    #make a duplicatev value which is never tampered with
+    print(gcContent(sequence,new_seq), "%")   #print function 
