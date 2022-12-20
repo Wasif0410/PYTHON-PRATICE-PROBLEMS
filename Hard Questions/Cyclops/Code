@@ -1,0 +1,14 @@
+def is_cyclops(n):
+
+    cyclo = str(n)  #turn n into string cyclo
+
+    #if the length mod 2 is 0 its false
+    if len(cyclo) %2 ==0:
+        return False
+
+    #if there is only one 0 and its in the middle return true
+    if cyclo.count("0") == 1 and cyclo[len(cyclo)//2] == "0":
+        return True
+    
+    else:
+        return False
